@@ -1,85 +1,106 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, ExternalLink } from 'lucide-react';
+import React, { useState } from "react";
+import { Mail, Phone, MapPin, Send, ExternalLink } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission logic here
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
     // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   const contactInfo = [
     {
       icon: <Mail className="w-6 h-6" />,
-      title: 'Email',
-      value: 'mohammadsahal151@gmail.com',
-      link: 'mailto:mohammadsahal151@gmail.com'
+      title: "Email",
+      value: "mohammadsahal151@gmail.com",
+      link: "mailto:mohammadsahal151@gmail.com",
     },
     {
       icon: <Phone className="w-6 h-6" />,
-      title: 'Phone',
-      value: '+91 80210 11060',
-      link: 'tel:+918021011060'
+      title: "Phone",
+      value: "+91 89210 11060",
+      link: "tel:+918921011060",
     },
     {
       icon: <MapPin className="w-6 h-6" />,
-      title: 'Location',
-      value: 'Kerala, India 673508',
-      link: null
+      title: "Location",
+      value: "Kerala, India 673508",
+      link: null,
     },
     {
       icon: <ExternalLink className="w-6 h-6" />,
-      title: 'LinkedIn',
-      value: 'Mohammad Sahal',
-      link: 'https://linkedin.com/in/mohammad-sahal'
-    }
+      title: "LinkedIn",
+      value: "Mohammad Sahal",
+      link: "https://linkedin.com/in/mohammad-sahal",
+    },
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+    <section
+      id="contact"
+      className="py-20 bg-gradient-to-br from-slate-50 to-blue-50"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-slate-800 mb-4">Get In Touch</h2>
+          <h2 className="text-4xl font-bold text-slate-800 mb-4">
+            Get In Touch
+          </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            I'm always interested in hearing about new opportunities and exciting projects. 
-            Let's connect and discuss how we can work together.
+            I'm always interested in hearing about new opportunities and
+            exciting projects. Let's connect and discuss how we can work
+            together.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div>
-            <h3 className="text-2xl font-bold text-slate-800 mb-8">Contact Information</h3>
+            <h3 className="text-2xl font-bold text-slate-800 mb-8">
+              Contact Information
+            </h3>
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
-                <div key={index} className="flex items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div
+                  key={index}
+                  className="flex items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
+                >
                   <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-4">
                     <div className="text-white">{info.icon}</div>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800">{info.title}</h4>
+                    <h4 className="font-semibold text-slate-800">
+                      {info.title}
+                    </h4>
                     {info.link ? (
                       <a
                         href={info.link}
                         className="text-blue-600 hover:text-blue-700 transition-colors duration-200"
-                        target={info.link.startsWith('http') ? '_blank' : '_self'}
-                        rel={info.link.startsWith('http') ? 'noopener noreferrer' : ''}
+                        target={
+                          info.link.startsWith("http") ? "_blank" : "_self"
+                        }
+                        rel={
+                          info.link.startsWith("http")
+                            ? "noopener noreferrer"
+                            : ""
+                        }
                       >
                         {info.value}
                       </a>
@@ -94,11 +115,16 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div>
-            <h3 className="text-2xl font-bold text-slate-800 mb-8">Send a Message</h3>
+            <h3 className="text-2xl font-bold text-slate-800 mb-8">
+              Send a Message
+            </h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-slate-700 mb-2"
+                  >
                     Name
                   </label>
                   <input
@@ -113,7 +139,10 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-slate-700 mb-2"
+                  >
                     Email
                   </label>
                   <input
@@ -128,9 +157,12 @@ const Contact = () => {
                   />
                 </div>
               </div>
-              
+
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-slate-700 mb-2">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium text-slate-700 mb-2"
+                >
                   Subject
                 </label>
                 <input
@@ -144,9 +176,12 @@ const Contact = () => {
                   placeholder="What's this about?"
                 />
               </div>
-              
+
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-slate-700 mb-2"
+                >
                   Message
                 </label>
                 <textarea
@@ -160,7 +195,7 @@ const Contact = () => {
                   placeholder="Tell me about your project..."
                 />
               </div>
-              
+
               <button
                 type="submit"
                 className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center shadow-lg hover:shadow-xl"
